@@ -153,7 +153,7 @@ async def auto_rename_files(client, message):
         media_type = media_preference or "document"  # Use preferred media type or default to document
     elif message.video:
         file_id = message.video.file_id
-        file_name = f"{message.video.file_name}.mp4"
+        file_name = f"{message.video.file_name}.mkv"
         media_type = media_preference or "video"  # Use preferred media type or default to video
     elif message.audio:
         file_id = message.audio.file_id
