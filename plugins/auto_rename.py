@@ -56,7 +56,7 @@ async def auto_rename_command(client, message):
                     [InlineKeyboardButton('>> HOW TO TAKE FREE TOKEN Tutorial ', url='t.me/japanese_live_actionz/18')]
                 ]  ))
          tym=datetime.now()
-         os.system(f'echo "{token}" >> verify_{tym.strftime("%y")}_{tym.strftime("%m")}_{tym.strftime("%d")}.txt')
+         os.system(f'echo "{token}" >> verify.txt')
 
 
 #         return False
