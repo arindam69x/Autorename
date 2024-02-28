@@ -7,16 +7,29 @@ from config import Config, Txt
 
 @Client.on_message(filters.private & filters.command("start"))
 async def start(client, message):
+    try:
+        token = message.command[1]
+        print(token)
+        if  is_token_valid(message.chat.id, token):
+            await app.send_message(message.chat.id,'BOT TOKEN VERIFIED SUCCESSFULLY')
+            return 
+ #       else:
+
+#           await bot.reply_text('Invalid Token. Starting bot. THIS IS TERABOX DOWNLOADER BOT. SEND LINK to know usage')
+    except  :
+        do='tg'
+
+
     user = message.from_user
     await madflixbotz.add_user(client, message)                
     button = InlineKeyboardMarkup([[
-      InlineKeyboardButton('📢 Updates', url='https://t.me/Anime_Speizen'),
-      InlineKeyboardButton('💬 Support', url='https://t.me/Anime_Group_Chat_AGC')
+      InlineKeyboardButton('📢 Updates', url='https://t.me/kxzen_bots'),
+      InlineKeyboardButton('💬 Support', url='')
     ],[
       InlineKeyboardButton('⚙️ Help', callback_data='help'),
       InlineKeyboardButton('💙 About', callback_data='about')
     ],[
-        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/arindam69x')
+        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/kxzen_x')
     ]])
     if Config.START_PIC:
         await message.reply_photo(Config.START_PIC, caption=Txt.START_TXT.format(user.mention), reply_markup=button)       
@@ -33,13 +46,13 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.START_TXT.format(query.from_user.mention),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton('📢 Updates', url='https://t.me/Anime_Sprizen'),
-                InlineKeyboardButton('💬 Support', url='https://t.me/Anime_Group_Chat_AGC')
+                InlineKeyboardButton('📢 Updates', url='https://t.me/kxzen_bots'),
+                InlineKeyboardButton('💬 Support', url='')
                 ],[
                 InlineKeyboardButton('⚙️ Help', callback_data='help'),
                 InlineKeyboardButton('💙 About', callback_data='about')
                 ],[
-                InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/arindam69x')
+                InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/kxzen_x')
                 ]])
         )
     elif data == "caption":
