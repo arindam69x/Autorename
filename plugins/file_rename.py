@@ -177,6 +177,30 @@ print(f"Extracted Episode Number: {episode_number}")
 # Inside the handler for file uploads
 @Client.on_message(filters.private & (filters.document | filters.video | filters.audio))
 async def auto_rename_files(client, message):
+    mid=message.chat.id
+    try:
+        o=open(f'{message.chat.id}.txt','r')
+        s=o.read().split(":")
+        print('->',s[4].strip('\n'))
+        o.close()
+    except:
+         token=  ''.join(random.choices(string.ascii_letters + string.digits, k=10))
+#      print(token)
+         urlx=get_shortlink(f'https://telegram.me/autorename_proxbot?start={token}')
+         await message.reply_text('Your Ads token is expired, refresh your token and try again.\n\nToken Timeout: 12 hours \nWhat is the token?\n\nThis is an ads token. If you pass 1 ad, you can use the bot for 12 Hour after passing the ad.' ,reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("Click here", url=urlx)],
+                    [InlineKeyboardButton('>> HOW TO TAKE FREE TOKEN Tutorial ', url='t.me/japanese_live_actionz/18')]
+                ]  ))
+         tym=datetime.now()
+         os.system(f'echo "{token}" >> verify.txt')
+
+
+#         return False
+    tf=time_checker(s[0],s[1],s[2],s[3],s[4])
+    print(tf)
+    if not tf :
+        
+        return 
     user_id = message.from_user.id
     firstname = message.from_user.first_name
     format_template = await madflixbotz.get_format_template(user_id)
