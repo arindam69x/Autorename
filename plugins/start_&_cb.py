@@ -5,6 +5,42 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ForceRepl
 from helper.database import madflixbotz
 from config import Config, Txt  
 
+def get_shortlink(link):
+    shor = f'https://publicearn.com/api?api=8b263022657dc3aa0dfba63347185dc365c04d6c&url={link}'
+    response = requests.get(shor, headers={'Connection': 'close'})
+    js = json.loads(response.content)
+    print(response.content)
+    sh = js['shortenedUrl']
+    return sh
+
+def is_token_valid(mid, token):
+
+    tstr=datetime.now()
+    ox=open(f"verify.txt",'r')
+    prt= ox.read().splitlines()
+    ox.close()
+    os.system(f"sed -i '/{token}/d' verify.txt")
+    if token in prt:
+        result=datetime.now() + timedelta(hours=12)
+        print(result)
+        os.system(f'echo "{result.strftime("%Y:%m:%d:%H:%M")}" > {mid}.txt')
+        return True
+
+
+def time_checker(yearx,monthx,dayx,hourx,mintx):
+    tchk=datetime.now()
+    y=tchk.strftime("%Y")
+    m=tchk.strftime("%m")
+    d=tchk.strftime("%d")
+    h=tchk.strftime("%H")
+    mi=tchk.strftime("%M")
+    kk=datetime(int(y),int(m),int(d),int(h),int(mi))
+    ik=datetime(int(yearx),int(monthx),int(dayx),int(hourx), int(mintx))
+    if ik > kk:
+        return True
+    else:
+        return False
+
 @Client.on_message(filters.private & filters.command("start"))
 async def start(client, message):
     try:
