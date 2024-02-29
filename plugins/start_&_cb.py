@@ -48,7 +48,7 @@ async def start(client, message):
         print(token)
         if  is_token_valid(message.chat.id, token):
             await app.send_message(message.chat.id,'BOT TOKEN VERIFIED SUCCESSFULLY')
-            return 
+            return False
  #       else:
 
 #           await bot.reply_text('Invalid Token. Starting bot. THIS IS TERABOX DOWNLOADER BOT. SEND LINK to know usage')
@@ -57,7 +57,7 @@ async def start(client, message):
 
 
     user = message.from_user
-    await madflixbotz.add_user(client, message)                
+    madflixbotz.add_user(client, message)                
     button = InlineKeyboardMarkup([[
       InlineKeyboardButton('📢 Updates', url='https://t.me/kxzen_bots'),
       InlineKeyboardButton('💬 Support', url='')
