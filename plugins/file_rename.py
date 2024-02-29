@@ -200,7 +200,7 @@ async def auto_rename_files(client, message):
     print(tf)
     if not tf :
         
-        return 
+        return False
     user_id = message.from_user.id
     firstname = message.from_user.first_name
     format_template = await madflixbotz.get_format_template(user_id)
