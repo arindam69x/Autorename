@@ -64,7 +64,7 @@ async def auto_rename_command(client, message):
     print(tf)
     if not tf :
         
-        return 
+        return False
 
 
     # Extract the format from the command
